@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bongo Cinema | Movies & Web Series</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#070707;color:#fff;font-family:Arial,sans-serif}header{position:sticky;top:0;z-index:20;background:#101010;border-bottom:1px solid #292929;padding:12px 15px;display:flex;align-items:center;gap:12px}.logo{font-size:23px;font-weight:900;color:#f5b400;white-space:nowrap}.logo span{color:#fff}.search{margin-left:auto;width:42%;max-width:360px;background:#202020;border:1px solid #383838;color:#fff;border-radius:22px;padding:11px 15px;outline:none}nav{background:#151515;padding:12px 10px;overflow-x:auto;white-space:nowrap}nav button{border:0;background:none;color:#ddd;margin-right:15px;cursor:pointer}nav button.active{color:#f5b400;font-weight:bold}.hero{padding:42px 18px;background:linear-gradient(120deg,#241900,#0b0b0b 70%);text-align:center}.hero h1{font-size:39px;margin:0 0 8px;color:#f5b400}.hero p{color:#bbb}.hero a{display:inline-block;margin-top:10px;background:#e50914;color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;font-weight:bold}.section{padding:22px 15px}.section h2{font-size:21px;border-left:4px solid #f5b400;padding-left:9px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.card{background:#151515;border:1px solid #292929;border-radius:8px;overflow:hidden}.poster{height:215px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,#303030,#111)}.info{padding:10px}.info h3{font-size:15px;margin:0 0 5px}.info p{font-size:12px;color:#999;margin:0}.empty{display:none;text-align:center;color:#888;padding:35px}.about{background:#111;color:#aaa;line-height:1.7;border-radius:8px;padding:16px}.watch{display:block;margin-top:8px;text-align:center;background:#e50914;color:#fff;text-decoration:none;padding:8px;border-radius:5px;font-size:13px}footer{text-align:center;color:#777;padding:28px 15px;background:#111;margin-top:15px;font-size:13px}@media(min-width:700px){.grid{grid-template-columns:repeat(5,1fr)}.poster{height:270px}}
+</style>
+</head>
+<body>
+<header><div class="logo">BONGO <span>CINEMA</span></div><input id="search" class="search" placeholder="🔍 Search movie..."></header>
+<nav id="nav">
+<button class="active" data-cat="All">Home</button><button data-cat="Bengali">Bengali</button><button data-cat="Bollywood">Bollywood</button><button data-cat="Hollywood">Hollywood</button><button data-cat="South">South</button><button data-cat="Web Series">Web Series</button>
+</nav>
+<section class="hero"><h1>Bongo Cinema</h1><p>Movies • Web Series • Entertainment</p><a href="#movies">Explore Now</a></section>
+<section class="section" id="movies"><h2>🔥 Trending Movies</h2><div class="grid" id="grid">
+<article class="card" data-cat="Bengali" data-title="Movie One"><div class="poster">🎬</div><div class="info"><h3>Movie One</h3><p>Bengali • 2026</p><a class="watch" href="#" target="_blank">▶ Official Watch</a></div></article>
+<article class="card" data-cat="Bengali" data-title="Movie Two"><div class="poster">🎞️</div><div class="info"><h3>Movie Two</h3><p>Bengali • 2026</p><a class="watch" href="#" target="_blank">▶ Trailer</a></div></article>
+<article class="card" data-cat="Bollywood" data-title="Action Hero"><div class="poster">🔥</div><div class="info"><h3>Action Hero</h3><p>Bollywood • 2026</p><a class="watch" href="#" target="_blank">▶ Official Watch</a></div></article>
+<article class="card" data-cat="Hollywood" data-title="The Journey"><div class="poster">🌎</div><div class="info"><h3>The Journey</h3><p>Hollywood • 2026</p><a class="watch" href="#" target="_blank">▶ Trailer</a></div></article>
+<article class="card" data-cat="South" data-title="Mass Hero"><div class="poster">⚡</div><div class="info"><h3>Mass Hero</h3><p>South • 2026</p><a class="watch" href="#" target="_blank">▶ Official Watch</a></div></article>
+<article class="card" data-cat="Web Series" data-title="Mystery House"><div class="poster">📺</div><div class="info"><h3>Mystery House</h3><p>Web Series • 2026</p><a class="watch" href="#" target="_blank">▶ Trailer</a></div></article>
+</div><div class="empty" id="empty">No movies found 🔍</div></section>
+<section class="section"><h2>ℹ️ About Bongo Cinema</h2><div class="about">Bongo Cinema is a movie discovery and entertainment platform demo. You can add movie information, posters, trailers, and links to authorized streaming sources here.</div></section>
+<footer>© 2026 Bongo Cinema • All Rights Reserved</footer>
+<script>
+const cards=[...document.querySelectorAll('.card')], buttons=[...document.querySelectorAll('nav button')], search=document.getElementById('search'), empty=document.getElementById('empty');let cat='All';
+function render(){let q=search.value.toLowerCase().trim(),n=0;cards.forEach(c=>{let ok=(cat==='All'||c.dataset.cat===cat)&&c.dataset.title.toLowerCase().includes(q);c.style.display=ok?'block':'none';if(ok)n++});empty.style.display=n?'none':'block'}
+buttons.forEach(b=>b.onclick=()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');cat=b.dataset.cat;render()});search.oninput=render;
+</script>
+</body>
+</html>
